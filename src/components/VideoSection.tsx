@@ -1,0 +1,121 @@
+import { motion } from "framer-motion";
+import { Play, Youtube } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const videos = [
+  {
+    id: "1",
+    title: "Behind the Scenes",
+    description: "A glimpse into the creative process",
+    thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80",
+    youtubeId: "dQw4w9WgXcQ", // Replace with actual video IDs
+  },
+  {
+    id: "2",
+    title: "Wedding Highlights",
+    description: "Capturing love stories",
+    thumbnail: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",
+    youtubeId: "dQw4w9WgXcQ",
+  },
+  {
+    id: "3",
+    title: "Fashion Shoot",
+    description: "Editorial session walkthrough",
+    thumbnail: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80",
+    youtubeId: "dQw4w9WgXcQ",
+  },
+];
+
+export const VideoSection = () => {
+  return (
+    <section id="videos" className="py-24 lg:py-32 bg-background">
+      <div className="container mx-auto px-6 lg:px-12">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 lg:mb-20"
+        >
+          <span className="text-sm tracking-[0.3em] uppercase text-primary font-medium mb-4 block font-body">
+            Behind the Lens
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground">
+            Video & Live Sessions
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto font-body">
+            Experience the artistry through motion. Behind-the-scenes content, live shoots, and creative sessions.
+          </p>
+        </motion.div>
+
+        {/* Video Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video, index) => (
+            <motion.div
+              key={video.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group"
+            >
+              <a
+                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="relative aspect-video overflow-hidden rounded-lg shadow-card bg-muted">
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300" />
+                  
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-elevated">
+                      <Play className="w-6 h-6 text-primary-foreground ml-1" fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {video.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mt-1 font-body">
+                    {video.description}
+                  </p>
+                </div>
+              </a>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* YouTube Channel CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-16"
+        >
+          <Button variant="outline" size="lg" asChild>
+            <a
+              href="https://www.youtube.com/@azizbenarfa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Youtube className="w-5 h-5" />
+              Subscribe to Channel
+            </a>
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
