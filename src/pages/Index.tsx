@@ -1,17 +1,21 @@
-import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/HeroSection";
-import { PortfolioSection } from "@/components/PortfolioSection";
-import { VideoSection } from "@/components/VideoSection";
-import { AboutSection } from "@/components/AboutSection";
-import { ContactSection } from "@/components/ContactSection";
-import { Footer } from "@/components/Footer";
+ import { Navbar } from "@/components/Navbar";
+ import { HeroSection } from "@/components/HeroSection";
+ import { TrustedBySection } from "@/components/TrustedBySection";
+ import { StatsSection } from "@/components/StatsSection";
+ import { PortfolioSection } from "@/components/PortfolioSection";
+ import { VideoSection } from "@/components/VideoSection";
+ import { AboutSection } from "@/components/AboutSection";
+ import { ContactSection } from "@/components/ContactSection";
+ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
-      <PortfolioSection />
+       <HeroSection />
+       <TrustedBySection />
+       <StatsSection />
+       <PortfolioSection />
       <VideoSection />
       <AboutSection />
       <ContactSection />

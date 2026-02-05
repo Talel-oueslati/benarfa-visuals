@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useParams, Link } from "react-router-dom";
+ import { useState } from "react";
+ import { motion, AnimatePresence } from "framer-motion";
+ import { useParams } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+ import { X, ChevronLeft, ChevronRight } from "lucide-react";
+ import { CategoryHeader } from "@/components/CategoryHeader";
+ import { LightboxThumbnails } from "@/components/LightboxThumbnails";
 
 // Import portfolio images
 import weddingsImg from "@/assets/portfolio-weddings.jpg";
@@ -51,13 +52,7 @@ const galleryData: Record<string, { title: string; subtitle: string; images: str
   },
 };
 
-const categories = [
-  { slug: "weddings", name: "Weddings" },
-  { slug: "portrait", name: "Portrait" },
-  { slug: "fashion", name: "Fashion" },
-];
-
-export default function PortfolioCategory() {
+ export default function PortfolioCategory() {
   const { category } = useParams<{ category: string }>();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -95,53 +90,12 @@ export default function PortfolioCategory() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Header */}
-      <section className="pt-32 pb-16 bg-secondary/30">
-        <div className="container mx-auto px-6 lg:px-12">
-          {/* Back Button */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Link
-              to="/#portfolio"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 font-body"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Portfolio
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <span className="text-sm tracking-[0.3em] uppercase text-primary font-medium mb-4 block font-body">
-              {data.subtitle}
-            </span>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-8">
-              {data.title}
-            </h1>
-
-            {/* Category Navigation */}
-            <div className="flex flex-wrap justify-center gap-4">
-              {categories.map((cat) => (
-                <Link key={cat.slug} to={`/portfolio/${cat.slug}`}>
-                  <Button
-                    variant={cat.slug === category ? "default" : "outline"}
-                    size="lg"
-                  >
-                    {cat.name}
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+       {/* Header with Cover Image */}
+       <CategoryHeader
+         category={category || "weddings"}
+         title={data.title}
+         subtitle={data.subtitle}
+       />
 
       {/* Gallery Grid */}
       <section className="py-16 lg:py-24">
@@ -223,8 +177,16 @@ export default function PortfolioCategory() {
               onClick={(e) => e.stopPropagation()}
             />
 
-            {/* Counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-secondary font-body">
+             {/* Thumbnail Navigation */}
+             <LightboxThumbnails
+               images={data.images}
+               currentIndex={currentImageIndex}
+               onSelect={setCurrentImageIndex}
+               title={data.title}
+             />
+ 
+             {/* Counter */}
+             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-secondary/80 font-body text-sm">
               {currentImageIndex + 1} / {data.images.length}
             </div>
           </motion.div>
