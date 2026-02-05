@@ -1,15 +1,25 @@
  import { motion } from "framer-motion";
+ import { 
+   Wifi, 
+   Citrus, 
+   GraduationCap, 
+   Phone, 
+   ShoppingCart, 
+   Store, 
+   Sparkles, 
+   Landmark 
+ } from "lucide-react";
  
- // Client logos with text-based placeholders (these would be actual logos in production)
+ // Client logos with icons
  const clients = [
-   { name: "Ooredoo", display: "OOREDOO" },
-   { name: "Orange", display: "ORANGE" },
-   { name: "Collège LaSalle", display: "LA SALLE" },
-   { name: "Tunisie Telecom", display: "TUNISIE TELECOM" },
-   { name: "Carrefour", display: "CARREFOUR" },
-   { name: "Monoprix", display: "MONOPRIX" },
-   { name: "Aziza", display: "AZIZA" },
-   { name: "BH Bank", display: "BH BANK" },
+   { name: "Ooredoo", display: "OOREDOO", icon: Wifi },
+   { name: "Orange", display: "ORANGE", icon: Citrus },
+   { name: "Collège LaSalle", display: "LA SALLE", icon: GraduationCap },
+   { name: "Tunisie Telecom", display: "TUNISIE TELECOM", icon: Phone },
+   { name: "Carrefour", display: "CARREFOUR", icon: ShoppingCart },
+   { name: "Monoprix", display: "MONOPRIX", icon: Store },
+   { name: "Aziza", display: "AZIZA", icon: Sparkles },
+   { name: "BH Bank", display: "BH BANK", icon: Landmark },
  ];
  
  export const TrustedBySection = () => {
@@ -57,7 +67,8 @@
                key={`${client.name}-${index}`}
                className="flex-shrink-0 px-6"
              >
-               <div className="flex items-center justify-center h-12 px-8 bg-background/50 rounded-lg border border-border/50 backdrop-blur-sm">
+               <div className="flex items-center justify-center gap-3 h-12 px-8 bg-background/50 rounded-lg border border-border/50 backdrop-blur-sm">
+                 <client.icon className="w-5 h-5 text-primary" />
                  <span className="font-display text-lg md:text-xl font-semibold text-muted-foreground/70 whitespace-nowrap tracking-wide">
                    {client.display}
                  </span>

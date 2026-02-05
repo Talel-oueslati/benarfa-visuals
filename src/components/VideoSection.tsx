@@ -1,6 +1,13 @@
-import { motion } from "framer-motion";
-import { Play, Youtube } from "lucide-react";
+ import { useState } from "react";
+ import { motion } from "framer-motion";
+ import { Play, Youtube, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+ import {
+   Dialog,
+   DialogContent,
+   DialogHeader,
+   DialogTitle,
+ } from "@/components/ui/dialog";
 
 const videos = [
   {
@@ -27,6 +34,8 @@ const videos = [
 ];
 
 export const VideoSection = () => {
+   const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
+ 
   return (
     <section id="videos" className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
@@ -49,6 +58,29 @@ export const VideoSection = () => {
           </p>
         </motion.div>
 
+       {/* Recent Header with View All */}
+       <motion.div
+         initial={{ opacity: 0, y: 20 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true }}
+         transition={{ duration: 0.5 }}
+         className="flex items-center justify-between mb-8"
+       >
+         <span className="text-sm tracking-[0.2em] uppercase text-muted-foreground font-medium font-body">
+           Recent
+         </span>
+         <Button variant="ghost" size="sm" asChild>
+           <a
+             href="https://www.youtube.com/@azizbenarfa"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="text-primary hover:text-primary/80"
+           >
+             View All
+           </a>
+         </Button>
+       </motion.div>
+ 
         {/* Video Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video, index) => (
@@ -60,11 +92,9 @@ export const VideoSection = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="group"
             >
-              <a
-                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
+             <button
+               onClick={() => setSelectedVideo(video)}
+               className="block w-full text-left"
               >
                 <div className="relative aspect-video overflow-hidden rounded-lg shadow-card bg-muted">
                   <img
@@ -90,11 +120,36 @@ export const VideoSection = () => {
                     {video.description}
                   </p>
                 </div>
-              </a>
+             </button>
             </motion.div>
           ))}
         </div>
 
+       {/* Video Popup Dialog */}
+       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+         <DialogContent className="max-w-4xl p-0 bg-background border-border overflow-hidden">
+           <DialogHeader className="p-4 pb-0">
+             <DialogTitle className="font-display text-xl">
+               {selectedVideo?.title}
+             </DialogTitle>
+           </DialogHeader>
+           <div className="aspect-video w-full">
+             {selectedVideo && (
+               <iframe
+                 src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                 title={selectedVideo.title}
+                 className="w-full h-full"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                 allowFullScreen
+               />
+             )}
+           </div>
+           <p className="px-4 pb-4 text-muted-foreground text-sm font-body">
+             {selectedVideo?.description}
+           </p>
+         </DialogContent>
+       </Dialog>
+ 
         {/* YouTube Channel CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
