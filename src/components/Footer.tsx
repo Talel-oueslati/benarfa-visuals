@@ -23,7 +23,7 @@ export const Footer = () => {
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <a
-              href="https://www.instagram.com/aziz_ben_arfa/"
+              href="https://instagram.com/azizbenarfa"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
