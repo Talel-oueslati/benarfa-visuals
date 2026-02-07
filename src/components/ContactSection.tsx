@@ -15,7 +15,7 @@ const socialLinks = [
 const contactInfo = [
   { icon: Mail, text: "contact@benArfaproduction.com", href: "mailto:contact@benArfaproduction.com" },
   { icon: Phone, text: "+216 XX XXX XXX", href: "tel:+216XXXXXXXX" },
-  { icon: MapPin, text: "Tunisia", href: null },
+  { icon: MapPin, text: "Rue Moncef Bey, La Marsa 2070, Tunisia", href: "https://maps.google.com/?q=Rue+Moncef+Bey,+La+Marsa+2070,+Tunisia" },
 ];
 
 export const ContactSection = () => {
@@ -204,9 +204,24 @@ export const ContactSection = () => {
               </h4>
               <p className="text-muted-foreground text-sm font-body leading-relaxed">
                 Professional photography studio specializing in weddings, portraits, 
-                fashion, and commercial advertising. Based in Tunisia, serving clients 
+                fashion, and commercial advertising. Based in La Marsa, Tunisia, serving clients 
                 worldwide.
               </p>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="mt-8 rounded-lg overflow-hidden border border-border shadow-soft">
+              <iframe
+                title="Benarfa Production Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.5!2d10.3247!3d36.8789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRue+Moncef+Bey%2C+La+Marsa+2070!5e0!3m2!1sen!2stn!4v1700000000000"
+                width="100%"
+                height="220"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              />
             </div>
           </motion.div>
         </div>
