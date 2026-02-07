@@ -21,7 +21,8 @@ const clients = [
 ];
 
 export const TrustedBySection = () => {
-  const duplicatedClients = [...clients, ...clients];
+  // Quadruple the list for a truly seamless loop
+  const repeatedClients = [...clients, ...clients, ...clients, ...clients];
 
   return (
     <section className="py-12 lg:py-16 bg-secondary/30 overflow-hidden">
@@ -39,41 +40,30 @@ export const TrustedBySection = () => {
         </motion.div>
       </div>
 
-      {/* Infinite scrolling logos */}
+      {/* Infinite scrolling logos with CSS animation */}
       <div className="relative">
         {/* Gradient masks */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-secondary/30 to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-secondary/30 to-transparent z-10" />
 
-        <motion.div
-          className="flex gap-12 items-center"
-          animate={{
-            x: [0, -50 * clients.length * 8],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear",
-            },
-          }}
-        >
-          {duplicatedClients.map((client, index) => (
-            <div
-              key={`${client.name}-${index}`}
-              className="flex-shrink-0 px-6"
-            >
-              <div className="flex items-center justify-center h-16 px-8 bg-background/50 rounded-lg border border-border/50 backdrop-blur-sm">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="h-10 w-auto max-w-[120px] object-contain"
-                />
+        <div className="marquee-container">
+          <div className="marquee-track">
+            {repeatedClients.map((client, index) => (
+              <div
+                key={`${client.name}-${index}`}
+                className="flex-shrink-0 px-6"
+              >
+                <div className="flex items-center justify-center h-16 px-8 bg-background/50 rounded-lg border border-border/50 backdrop-blur-sm">
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className="h-10 w-auto max-w-[120px] object-contain"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
