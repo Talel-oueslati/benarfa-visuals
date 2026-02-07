@@ -7,14 +7,15 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/azizbenarfa", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/aziz_ben_arfa/", label: "Instagram" },
   { icon: Facebook, href: "https://facebook.com/benArfaproduction", label: "Facebook" },
   { icon: Youtube, href: "https://youtube.com/@azizbenarfa", label: "YouTube" },
 ];
 
 const contactInfo = [
-  { icon: Mail, text: "contact@benArfaproduction.com", href: "mailto:contact@benArfaproduction.com" },
-  { icon: Phone, text: "+216 XX XXX XXX", href: "tel:+216XXXXXXXX" },
+  { icon: Mail, text: "contact@azizbenarfa.com", href: "mailto:contact@azizbenarfa.com" },
+  { icon: Phone, text: "(+216) 22 588 479", href: "tel:+21622588479" },
+  { icon: Instagram, text: "@benarfa.production", href: "https://www.instagram.com/aziz_ben_arfa/" },
   { icon: MapPin, text: "Rue Moncef Bey, La Marsa 2070, Tunisia", href: "https://maps.google.com/?q=Rue+Moncef+Bey,+La+Marsa+2070,+Tunisia" },
 ];
 
