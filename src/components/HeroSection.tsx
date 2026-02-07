@@ -64,7 +64,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl md:text-2xl text-foreground/80 mb-4 font-display italic"
           >
-            Benarfa Production
+            Founder — @benarfa.production
           </motion.p>
 
           <motion.p
@@ -73,8 +73,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-lg text-muted-foreground mb-10 max-w-xl font-body leading-relaxed"
           >
-            Capturing moments of elegance and artistry. Professional photography,
-            photo retouching, and commercial advertising from Tunisia.
+            A good picture keeps a moment from running away.
           </motion.p>
 
           <motion.div
