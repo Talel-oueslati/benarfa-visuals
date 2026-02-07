@@ -32,8 +32,8 @@ export const HeroSection = () => {
          >
            <source src={heroVideo} type="video/mp4" />
          </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
       </div>
 
       {/* Content */}
@@ -103,7 +103,7 @@ export const HeroSection = () => {
           onClick={scrollToPortfolio}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
+          className="flex flex-col items-center text-foreground/60 hover:text-primary transition-colors"
         >
           <span className="text-xs tracking-widest uppercase mb-2 font-body">Scroll</span>
           <ArrowDown size={20} />
