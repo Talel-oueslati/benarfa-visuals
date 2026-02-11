@@ -33,7 +33,7 @@ export const HeroSection = () => {
          >
            <source src={heroVideo2} type="video/mp4" />
          </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent" />
       </div>
 
