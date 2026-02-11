@@ -2,6 +2,7 @@
  import { Button } from "@/components/ui/button";
  import { ArrowDown } from "lucide-react";
  import heroVideo from "@/assets/hero-video.mp4";
+ import heroVideo2 from "@/assets/hero-video2.mp4";
 
 export const HeroSection = () => {
   const scrollToPortfolio = () => {
@@ -30,10 +31,10 @@ export const HeroSection = () => {
            className="w-full h-full object-cover"
            poster=""
          >
-           <source src={heroVideo} type="video/mp4" />
+           <source src={heroVideo2} type="video/mp4" />
          </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent" />
       </div>
 
       {/* Content */}
