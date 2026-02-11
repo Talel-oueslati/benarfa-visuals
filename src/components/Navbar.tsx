@@ -50,10 +50,10 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex flex-col">
-            <span className="font-display text-2xl font-semibold text-white tracking-tight drop-shadow-md">
+            <span className="font-display text-2xl font-semibold tracking-tight drop-shadow-md text-foreground dark:text-white">
               Aziz Ben Arfa
             </span>
-            <span className="text-xs text-white/70 tracking-[0.2em] uppercase font-body drop-shadow-sm">
+            <span className="text-xs tracking-[0.2em] uppercase font-body drop-shadow-sm text-foreground/70 dark:text-white/70">
               Benarfa Production
             </span>
           </Link>
@@ -64,7 +64,7 @@ export const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.path)}
-                className="text-sm font-medium text-white/85 hover:text-white transition-colors duration-300 tracking-wide font-body drop-shadow-sm"
+                className="text-sm font-medium text-foreground/85 hover:text-foreground dark:text-white/85 dark:hover:text-white transition-colors duration-300 tracking-wide font-body drop-shadow-sm"
               >
                 {link.name}
               </button>
@@ -77,7 +77,7 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-white drop-shadow-sm"
+            className="md:hidden p-2 text-foreground dark:text-white drop-shadow-sm"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
