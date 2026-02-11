@@ -7,11 +7,13 @@
  import { AboutSection } from "@/components/AboutSection";
  import { ContactSection } from "@/components/ContactSection";
  import { Footer } from "@/components/Footer";
+ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <ThemeSwitcher />
        <HeroSection />
        <TrustedBySection />
        <StatsSection />
