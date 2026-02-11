@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -16,6 +17,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,15 +51,24 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex flex-col">
-            <span className="font-display text-2xl font-semibold text-foreground tracking-tight">
-              Aziz Ben Arfa
-            </span>
-            <span className="text-xs text-muted-foreground tracking-[0.2em] uppercase font-body">
-              Benarfa Production
-            </span>
-          </Link>
+          {/* Theme Toggle + Logo */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full text-foreground/70 hover:text-primary hover:bg-primary/10 transition-all duration-300"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <Link to="/" className="flex flex-col">
+              <span className="font-display text-2xl font-semibold text-foreground tracking-tight">
+                Aziz Ben Arfa
+              </span>
+              <span className="text-xs text-muted-foreground tracking-[0.2em] uppercase font-body">
+                Benarfa Production
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
